@@ -141,6 +141,41 @@
   },
   {
     "hook": {
+      "address": "0x486579de6391053df88a073cebd673dd545200cc",
+      "chain": "arbitrum",
+      "chainId": 42161,
+      "name": "The Pool",
+      "description": "The Pool protocol's volatility-adjusted fee hook (on-chain contract: DynamicFeeHookV2). Takes a percentage of each swap's output via afterSwapReturnsDelta (25 bps base, scaling up to 37.5 bps under realized volatility) and routes it to a fee distributor. Also supports reserve-sale fills in beforeSwap, where a registered vault can offer single-sided inventory to swappers at a chosen price in either price-improvement or vault-spread mode.",
+      "deployer": "0xe5f5Ef79b3DFF47EcDf7842645222e43AD0ed080",
+      "verifiedSource": true,
+      "auditUrl": ""
+    },
+    "flags": {
+      "beforeInitialize": false,
+      "afterInitialize": false,
+      "beforeAddLiquidity": false,
+      "afterAddLiquidity": false,
+      "beforeRemoveLiquidity": false,
+      "afterRemoveLiquidity": false,
+      "beforeSwap": true,
+      "afterSwap": true,
+      "beforeDonate": false,
+      "afterDonate": false,
+      "beforeSwapReturnsDelta": true,
+      "afterSwapReturnsDelta": true,
+      "afterAddLiquidityReturnsDelta": false,
+      "afterRemoveLiquidityReturnsDelta": false
+    },
+    "properties": {
+      "dynamicFee": false,
+      "upgradeable": false,
+      "requiresCustomSwapData": false,
+      "vanillaSwap": false,
+      "swapAccess": "none"
+    }
+  },
+  {
+    "hook": {
       "address": "0x5e645C3D580976Ca9e3fe77525D954E73a0Ce0C0",
       "chain": "arbitrum",
       "chainId": 42161,
@@ -198,6 +233,41 @@
       "afterDonate": false,
       "beforeSwapReturnsDelta": false,
       "afterSwapReturnsDelta": true,
+      "afterAddLiquidityReturnsDelta": false,
+      "afterRemoveLiquidityReturnsDelta": false
+    },
+    "properties": {
+      "dynamicFee": false,
+      "upgradeable": false,
+      "requiresCustomSwapData": false,
+      "vanillaSwap": false,
+      "swapAccess": "none"
+    }
+  },
+  {
+    "hook": {
+      "address": "0x63d3132013839ed98e9dbc375a88d5eebf52d040",
+      "chain": "arbitrum",
+      "chainId": 42161,
+      "name": "WLimitOrderHook",
+      "description": "A Uniswap v4 hook implementing single-tick limit orders with atomic swap + order placement. Users place orders by adding concentrated liquidity at a specific tick; when the pool price crosses that tick, the position is automatically filled. The swapAndPlaceOrder() function combines a swap and limit order placement in a single transaction, preventing front-running. Filled orders can be withdrawn at any time.",
+      "deployer": "0x8431849ae448E0EC537ab18a813158eab23E6912",
+      "verifiedSource": true,
+      "auditUrl": ""
+    },
+    "flags": {
+      "beforeInitialize": false,
+      "afterInitialize": true,
+      "beforeAddLiquidity": false,
+      "afterAddLiquidity": false,
+      "beforeRemoveLiquidity": false,
+      "afterRemoveLiquidity": false,
+      "beforeSwap": false,
+      "afterSwap": true,
+      "beforeDonate": false,
+      "afterDonate": false,
+      "beforeSwapReturnsDelta": false,
+      "afterSwapReturnsDelta": false,
       "afterAddLiquidityReturnsDelta": false,
       "afterRemoveLiquidityReturnsDelta": false
     },
@@ -1994,11 +2064,11 @@
   },
   {
     "hook": {
-      "address": "0x80E2F7dC8C2C880BbC4BDF80A5Fb0eB8B1DB68CC",
+      "address": "0x80e2f7dc8c2c880bbc4bdf80a5fb0eb8b1db68cc",
       "chain": "base",
       "chainId": 8453,
-      "name": "Liquid Dynamic Fee Hook V2",
-      "description": "Uniswap V4 hook with volatility-responsive dynamic LP fees (0.5%-5%), MEV protection via descending fee modules, per-swap pool extensions, and protocol fee collection. Powers Liquid Protocol token pools on Base.",
+      "name": "LiquidHookDynamicFeeV2",
+      "description": "Liquid Protocol's dynamic fee hook that adjusts LP fees based on realized volatility (tick movement across swaps) and collects a 20% protocol fee on paired token swaps. It includes a time-limited MEV protection module that can temporarily increase fees and an optional pool extension system for post-swap callbacks.",
       "deployer": "",
       "verifiedSource": true,
       "auditUrl": ""
@@ -2029,11 +2099,11 @@
   },
   {
     "hook": {
-      "address": "0x80e2f7dc8c2c880bbc4bdf80a5fb0eb8b1db68cc",
+      "address": "0x80E2F7dC8C2C880BbC4BDF80A5Fb0eB8B1DB68CC",
       "chain": "base",
       "chainId": 8453,
-      "name": "LiquidHookDynamicFeeV2",
-      "description": "Liquid Protocol's dynamic fee hook that adjusts LP fees based on realized volatility (tick movement across swaps) and collects a 20% protocol fee on paired token swaps. It includes a time-limited MEV protection module that can temporarily increase fees and an optional pool extension system for post-swap callbacks.",
+      "name": "Liquid Dynamic Fee Hook V2",
+      "description": "Uniswap V4 hook with volatility-responsive dynamic LP fees (0.5%-5%), MEV protection via descending fee modules, per-swap pool extensions, and protocol fee collection. Powers Liquid Protocol token pools on Base.",
       "deployer": "",
       "verifiedSource": true,
       "auditUrl": ""
@@ -2344,11 +2414,11 @@
   },
   {
     "hook": {
-      "address": "0x9811f10Cd549c754Fa9E5785989c422A762c28cc",
+      "address": "0x9811f10cd549c754fa9e5785989c422a762c28cc",
       "chain": "base",
       "chainId": 8453,
-      "name": "Liquid Static Fee Hook V2",
-      "description": "Uniswap V4 hook with fixed LP fee configuration, MEV protection via descending fee modules, per-swap pool extensions, and protocol fee collection. Alternative to the Dynamic Fee hook for Liquid Protocol pools preferring stable fees.",
+      "name": "LiquidHookStaticFeeV2",
+      "description": "A Liquid Protocol hook that enforces a static LP fee per pool (configured at initialization with separate rates for buying and selling the liquid token) and collects a 20% protocol fee on swaps. Includes optional MEV protection that can temporarily raise fees for up to 2 minutes after pool creation.",
       "deployer": "",
       "verifiedSource": true,
       "auditUrl": ""
@@ -2379,11 +2449,11 @@
   },
   {
     "hook": {
-      "address": "0x9811f10cd549c754fa9e5785989c422a762c28cc",
+      "address": "0x9811f10Cd549c754Fa9E5785989c422A762c28cc",
       "chain": "base",
       "chainId": 8453,
-      "name": "LiquidHookStaticFeeV2",
-      "description": "A Liquid Protocol hook that enforces a static LP fee per pool (configured at initialization with separate rates for buying and selling the liquid token) and collects a 20% protocol fee on swaps. Includes optional MEV protection that can temporarily raise fees for up to 2 minutes after pool creation.",
+      "name": "Liquid Static Fee Hook V2",
+      "description": "Uniswap V4 hook with fixed LP fee configuration, MEV protection via descending fee modules, per-swap pool extensions, and protocol fee collection. Alternative to the Dynamic Fee hook for Liquid Protocol pools preferring stable fees.",
       "deployer": "",
       "verifiedSource": true,
       "auditUrl": ""
@@ -5284,6 +5354,41 @@
   },
   {
     "hook": {
+      "address": "0x8f24193cc75fc64a30a038442bcd622ff4070088",
+      "chain": "ethereum",
+      "chainId": 1,
+      "name": "LodeHook",
+      "description": "A Uniswap v4 hook that captures top-of-block LVR and routes it through a per-pool splitter\n\nThe first swap of each block on an opted-in pool pays an additional premium scaled by `premiumBps`. Subsequent swaps in the same block pay only standard pool fees. A `minAuctionInputSize` floor defeats dust-disarm attacks, sub-economic swaps skip the auction slot without consuming it.\n\nSafety.\n- Pause guardian (separate multisig, kills capture globally in one tx)\n- Per-pool deactivation\n- 24h timelock ...",
+      "deployer": "0x9849ddA51E40e56998FE269568A7619eA3521cbF",
+      "verifiedSource": true,
+      "auditUrl": ""
+    },
+    "flags": {
+      "beforeInitialize": false,
+      "afterInitialize": false,
+      "beforeAddLiquidity": false,
+      "afterAddLiquidity": false,
+      "beforeRemoveLiquidity": false,
+      "afterRemoveLiquidity": false,
+      "beforeSwap": true,
+      "afterSwap": false,
+      "beforeDonate": false,
+      "afterDonate": false,
+      "beforeSwapReturnsDelta": true,
+      "afterSwapReturnsDelta": false,
+      "afterAddLiquidityReturnsDelta": false,
+      "afterRemoveLiquidityReturnsDelta": false
+    },
+    "properties": {
+      "dynamicFee": false,
+      "upgradeable": false,
+      "requiresCustomSwapData": false,
+      "vanillaSwap": false,
+      "swapAccess": "none"
+    }
+  },
+  {
+    "hook": {
       "address": "0x924e5C44c3b82C2C0Ba231Cd0De7B581180E1bC0",
       "chain": "ethereum",
       "chainId": 1,
@@ -6678,6 +6783,41 @@
       "dynamicFee": true,
       "upgradeable": false,
       "requiresCustomSwapData": false,
+      "vanillaSwap": false,
+      "swapAccess": "none"
+    }
+  },
+  {
+    "hook": {
+      "address": "0x91db9941a44c19a5409345c5f2f8a2c1f81ba888",
+      "chain": "unichain",
+      "chainId": 130,
+      "name": "AsyncSwap",
+      "description": "Async order book that intercepts exact-input swaps \u2014 the maker's input is taken as a 6909 claim and an open order is created at a limit price. A filler later settles by delivering the minimum output amount directly to the maker, bypassing the AMM entirely.",
+      "deployer": "",
+      "verifiedSource": true,
+      "auditUrl": ""
+    },
+    "flags": {
+      "beforeInitialize": true,
+      "afterInitialize": false,
+      "beforeAddLiquidity": true,
+      "afterAddLiquidity": false,
+      "beforeRemoveLiquidity": false,
+      "afterRemoveLiquidity": false,
+      "beforeSwap": true,
+      "afterSwap": false,
+      "beforeDonate": false,
+      "afterDonate": false,
+      "beforeSwapReturnsDelta": true,
+      "afterSwapReturnsDelta": false,
+      "afterAddLiquidityReturnsDelta": false,
+      "afterRemoveLiquidityReturnsDelta": false
+    },
+    "properties": {
+      "dynamicFee": false,
+      "upgradeable": false,
+      "requiresCustomSwapData": true,
       "vanillaSwap": false,
       "swapAccess": "none"
     }
