@@ -4619,6 +4619,41 @@
   },
   {
     "hook": {
+      "address": "0x0f7ff748f58d16876ba71783f3a7cf2cf3f2c040",
+      "chain": "ethereum",
+      "chainId": 1,
+      "name": "ShitGiftHook",
+      "description": "Uniswap V4 afterSwap hook for the ShitVerse meme ecosystem. On any qualifying buy (\u2265 42069 SHIT) of the canonical ETH/SHIT 1% pool, rolls a 1% RNG and on win transfers 1 ether of a randomly-picked community-deposited 'art' token (ERC-20/ERC-1155 dual-surface DualToken) to tx.origin. Per-origin 24h cooldown; CEI ordering with all state writes committed before the external transfer. Pool membership gated by ShitVerseFactory.isValidToken at deposit time.",
+      "deployer": "0x5F9C597e1358E41E14eB7A426E80b04A7CedB56b",
+      "verifiedSource": true,
+      "auditUrl": ""
+    },
+    "flags": {
+      "beforeInitialize": false,
+      "afterInitialize": false,
+      "beforeAddLiquidity": false,
+      "afterAddLiquidity": false,
+      "beforeRemoveLiquidity": false,
+      "afterRemoveLiquidity": false,
+      "beforeSwap": false,
+      "afterSwap": true,
+      "beforeDonate": false,
+      "afterDonate": false,
+      "beforeSwapReturnsDelta": false,
+      "afterSwapReturnsDelta": false,
+      "afterAddLiquidityReturnsDelta": false,
+      "afterRemoveLiquidityReturnsDelta": false
+    },
+    "properties": {
+      "dynamicFee": false,
+      "upgradeable": false,
+      "requiresCustomSwapData": false,
+      "vanillaSwap": false,
+      "swapAccess": "none"
+    }
+  },
+  {
+    "hook": {
       "address": "0x0fe942afdb2f51e25cbf892aad175c6a574f2888",
       "chain": "ethereum",
       "chainId": 1,
@@ -5879,6 +5914,41 @@
   },
   {
     "hook": {
+      "address": "0xaa92349f126fc28639c974b320a7eca9ea3a4088",
+      "chain": "ethereum",
+      "chainId": 1,
+      "name": "SpyHook",
+      "description": "Passes ordinary swaps through with zero fee impact; when the designated SpyBatch settler swaps with non-empty hookData, takes a 1% fee (COVERT_FEE_BPS) from the input currency and routes it to a vault address for burning.",
+      "deployer": "0x53896369e36D7184A1F29A0aE1DAFc3F0aAA4aF4",
+      "verifiedSource": true,
+      "auditUrl": ""
+    },
+    "flags": {
+      "beforeInitialize": false,
+      "afterInitialize": false,
+      "beforeAddLiquidity": false,
+      "afterAddLiquidity": false,
+      "beforeRemoveLiquidity": false,
+      "afterRemoveLiquidity": false,
+      "beforeSwap": true,
+      "afterSwap": false,
+      "beforeDonate": false,
+      "afterDonate": false,
+      "beforeSwapReturnsDelta": true,
+      "afterSwapReturnsDelta": false,
+      "afterAddLiquidityReturnsDelta": false,
+      "afterRemoveLiquidityReturnsDelta": false
+    },
+    "properties": {
+      "dynamicFee": false,
+      "upgradeable": false,
+      "requiresCustomSwapData": false,
+      "vanillaSwap": false,
+      "swapAccess": "none"
+    }
+  },
+  {
+    "hook": {
       "address": "0xaf53cb78035a8e0acce38441793e2648b15b88a0",
       "chain": "ethereum",
       "chainId": 1,
@@ -6391,6 +6461,41 @@
       "afterDonate": false,
       "beforeSwapReturnsDelta": true,
       "afterSwapReturnsDelta": true,
+      "afterAddLiquidityReturnsDelta": false,
+      "afterRemoveLiquidityReturnsDelta": false
+    },
+    "properties": {
+      "dynamicFee": false,
+      "upgradeable": false,
+      "requiresCustomSwapData": false,
+      "vanillaSwap": false,
+      "swapAccess": "none"
+    }
+  },
+  {
+    "hook": {
+      "address": "0xef2debe958d3d3b8cb8bf489961bddf23ca20040",
+      "chain": "ethereum",
+      "chainId": 1,
+      "name": "ShitGiftHook",
+      "description": "An afterSwap hook that enqueues a commit-reveal lottery ticket for qualifying SHIT token buys (\u2265 42069 SHIT) on the canonical pool. Tickets are settled 2+ blocks later using blockhash as RNG, giving a 1% chance of receiving 1 ether of a community-deposited art token (ERC-20/ERC-1155). Winners face a 24-hour cooldown; payouts go to tx.origin.",
+      "deployer": "0x5F9C597e1358E41E14eB7A426E80b04A7CedB56b",
+      "verifiedSource": true,
+      "auditUrl": ""
+    },
+    "flags": {
+      "beforeInitialize": false,
+      "afterInitialize": false,
+      "beforeAddLiquidity": false,
+      "afterAddLiquidity": false,
+      "beforeRemoveLiquidity": false,
+      "afterRemoveLiquidity": false,
+      "beforeSwap": false,
+      "afterSwap": true,
+      "beforeDonate": false,
+      "afterDonate": false,
+      "beforeSwapReturnsDelta": false,
+      "afterSwapReturnsDelta": false,
       "afterAddLiquidityReturnsDelta": false,
       "afterRemoveLiquidityReturnsDelta": false
     },
