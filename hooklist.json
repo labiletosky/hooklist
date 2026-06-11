@@ -2274,6 +2274,41 @@
   },
   {
     "hook": {
+      "address": "0x7db23263e461fdfc08cecf03cdfa503391e64044",
+      "chain": "base",
+      "chainId": 8453,
+      "name": "VenaHook",
+      "description": "Custom-accounting Uniswap v4 hook for ETH/VENA on Base. Uses afterSwap return delta (1% output fee), distributes 80% to NFT holders and 20% to treasury, and applies buy/sell NFT game logic.",
+      "deployer": "0x3b8C25CA63f901792570B1bbaDfF83369d25fF4c",
+      "verifiedSource": true,
+      "auditUrl": ""
+    },
+    "flags": {
+      "beforeInitialize": false,
+      "afterInitialize": false,
+      "beforeAddLiquidity": false,
+      "afterAddLiquidity": false,
+      "beforeRemoveLiquidity": false,
+      "afterRemoveLiquidity": false,
+      "beforeSwap": false,
+      "afterSwap": true,
+      "beforeDonate": false,
+      "afterDonate": false,
+      "beforeSwapReturnsDelta": false,
+      "afterSwapReturnsDelta": true,
+      "afterAddLiquidityReturnsDelta": false,
+      "afterRemoveLiquidityReturnsDelta": false
+    },
+    "properties": {
+      "dynamicFee": false,
+      "upgradeable": false,
+      "requiresCustomSwapData": false,
+      "vanillaSwap": false,
+      "swapAccess": "none"
+    }
+  },
+  {
+    "hook": {
       "address": "0x7deBE6943ACEFE85c4EE81Aadd736466e07528cC",
       "chain": "base",
       "chainId": 8453,
@@ -5166,6 +5201,41 @@
       "afterDonate": false,
       "beforeSwapReturnsDelta": true,
       "afterSwapReturnsDelta": false,
+      "afterAddLiquidityReturnsDelta": false,
+      "afterRemoveLiquidityReturnsDelta": false
+    },
+    "properties": {
+      "dynamicFee": false,
+      "upgradeable": false,
+      "requiresCustomSwapData": false,
+      "vanillaSwap": false,
+      "swapAccess": "none"
+    }
+  },
+  {
+    "hook": {
+      "address": "0x1df8e3ce04a62922506e4ba303e1338583155044",
+      "chain": "ethereum",
+      "chainId": 1,
+      "name": "DiamondHandsHook",
+      "description": "Anti-dump hook for a single DMND/WETH pool that charges 0% on buys and a dynamic 0.5\u201310% fee on sells, scaling with 1h rolling sell pressure via integral pricing. Captured fees are split 50/30/20 between a MerkleDistributor jackpot for DMND holders, WETH\u2192DMND buyback-and-burn, and direct LP donations via poolManager.donate().",
+      "deployer": "0x889850C014C75dF029157fEb59794263D9A075af",
+      "verifiedSource": true,
+      "auditUrl": ""
+    },
+    "flags": {
+      "beforeInitialize": false,
+      "afterInitialize": true,
+      "beforeAddLiquidity": false,
+      "afterAddLiquidity": false,
+      "beforeRemoveLiquidity": false,
+      "afterRemoveLiquidity": false,
+      "beforeSwap": false,
+      "afterSwap": true,
+      "beforeDonate": false,
+      "afterDonate": false,
+      "beforeSwapReturnsDelta": false,
+      "afterSwapReturnsDelta": true,
       "afterAddLiquidityReturnsDelta": false,
       "afterRemoveLiquidityReturnsDelta": false
     },
