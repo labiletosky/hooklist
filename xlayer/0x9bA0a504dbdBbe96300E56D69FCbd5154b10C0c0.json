@@ -1,0 +1,12 @@
+
+   {
+     "chainId": 196,
+     "address": "0x9bA0a504dbdBbe96300E56D69FCbd5154b10C0c0",
+     "name": "WorldCupGoalRushHook",
+     "description": "A gamified Uniswap V4 hook for the OKX X Layer World Cup Hackathon. Features an on-chain Match Prediction Jackpot (beforeSwap) and 'Goal Rush' swap fee rebates (afterSwap).",
+     "flags": {
+       "beforeSwap": true,
+       "afterSwap": true
+     },
+     "logoURI": "https://raw.githubusercontent.com/habibixyz/Goal-Rush/main/src/assets/logo.png"
+   }
